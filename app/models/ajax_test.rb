@@ -1,0 +1,2 @@
+class AjaxTest < ApplicationRecord
+end

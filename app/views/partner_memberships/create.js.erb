@@ -1,0 +1,9 @@
+var markup = "<tr><td><%= link_to('', edit_partner_membership_path(@partner_membership.id), {data: {toggle: "tooltip"}, title: 'edit', class: "glyphicon glyphicon-edit"}) %><%= link_to('', delete_partner_membership_path(@partner_membership.id), {data: {toggle: "tooltip"}, title: 'delete', class: "glyphicon glyphicon-remove"})%></td>";
+markup += "<td data-toggle="tooltip" title="<%= @partner_membership.competency.description %>"><%= @partner_membership.competency.name %></td>";
+markup += "<td><%= @partner_membership.competency_level.name %></td>";
+markup += "<td><%= @partner_membership.num_vse %></td>";
+markup += "<td><%= @partner_membership.num_vseplus %></td>";
+markup += "<td><%= @partner_membership.num_vcs %></td>";
+markup += "</tr>";
+$(#competencies tbody).append(markup);
+$("#myModal").modal('hide');

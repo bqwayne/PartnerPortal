@@ -1,0 +1,41 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+	<h3 id="myModalLabel">Add Partner Membership</h3>
+</div>
+
+
+	<% if @partner.nil? %>
+		<div class="modal-body">
+		<%= form_for(@partner_membership, :remote => true) do |pm| %>
+			<table class="table">
+				<tr><td>Partner: </td><td><%= pm.collection_select(:partner_id, Partner.sorted, :id, :name) %></td></tr>
+				<tr><td>Competency: </td><td><%= pm.collection_select(:competency_id, Competency.sorted, :id, :name) %></td></tr>
+				<tr><td>Competency Level: </td><td><%= pm.collection_select(:competency_level_id, CompetencyLevel.all, :id, :name)%></td></tr>
+				<tr><td>Number of VSE: </td><td><%= pm.number_field(:num_vse) %></td></tr>
+				<tr><td>Number of VSEplus: </td><td><%= pm.number_field(:num_vseplus) %></td></tr>
+				<tr><td>Number of VCS: </td><td><%= pm.number_field(:num_vcs) %></td></tr>
+			</table>
+
+			<%= pm.submit("Save") %>			
+		</div>
+		<% end %>
+	<% else %>
+		<div class="modal-body">
+		<%= form_for(partner_membership, :remote => true) do |pm| %>
+			<table class="table">
+				<tr><td>Competency: </td><td><%= pm.collection_select(:competency_id, @available_memberships, :id, :name) %></td></tr>
+				<tr><td>Competency Level: </td><td><%= pm.collection_select(:competency_level_id, CompetencyLevel.all, :id, :name)%></td></tr>
+				<tr><td>Number of VSE: </td><td><%= pm.number_field(:num_vse) %></td></tr>
+				<tr><td>Number of VSEplus: </td><td><%= pm.number_field(:num_vseplus) %></td></tr>
+				<tr><td>Number of VCS: </td><td><%= pm.number_field(:num_vcs) %></td></tr>
+			</table>
+			<%= pm.hidden_field(:partner_id) %>
+			<%= pm.submit("Save") %>
+		</div>
+		
+
+		<% end %>
+	<% end %>
+<div class="modal-footer">
+	<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+</div>

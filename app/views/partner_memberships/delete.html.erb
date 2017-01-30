@@ -1,0 +1,12 @@
+<% @page_title = "Delete Competency #{@partner_membership.competency.name} for Partner #{@partner_membership.partner.name}" %>
+<h1>Competency delete for Partner</h1>
+
+
+
+<%= form_for(@partner_membership, :method => 'delete') do |f| %>
+	<p>You are about to delete the competency <em><%= f.object.competency.name %></em> for partner: <em><%= f.object.partner.name %></em></p>
+	<%= f.submit("Delete") %>
+	<%= f.submit("Cancel") %>
+<% end %>
+<br />
+<%= link_to("Home", partners_path)%>

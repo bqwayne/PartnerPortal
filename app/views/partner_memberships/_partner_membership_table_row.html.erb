@@ -1,0 +1,16 @@
+			<tr>
+				<td><%= link_to('', edit_partner_membership_path(membership.id), {data: {toggle: "tooltip"}, title: 'edit', class: "glyphicon glyphicon-edit"}) %><%= link_to('', delete_partner_membership_path(membership.id), {data: {toggle: "tooltip"}, title: 'delete', class: "glyphicon glyphicon-remove"})%></td>
+				<td><%= membership.partner.name %></td>
+				<td data-toggle="tooltip" title="<%= membership.competency.description %>"><%= membership.competency.name %></td>
+				<td>
+					<% if !membership.competency_level.nil? %>
+						<%= membership.competency_level.name %>
+					<% else %>
+						Competency Level required
+					<% end %>
+					
+				</td>
+				<td><%= membership.num_vse %></td>
+				<td><%= membership.num_vseplus %></td>
+				<td><%= membership.num_vcs %></td>
+			</tr>

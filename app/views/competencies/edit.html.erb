@@ -1,0 +1,13 @@
+<% @page_title = "Edit #{@competency.name}" %>
+
+<h1>Competency edit</h1>
+
+<%= form_for(@competency) do |f| %>
+
+	<%= render(:partial => 'form', :locals => {:f => f}) %>
+
+	<%= f.submit("Update Competency") %>
+<% end %>
+<br />
+
+<%= link_to("Home", competencies_path)%>

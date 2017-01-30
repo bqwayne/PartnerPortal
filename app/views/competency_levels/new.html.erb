@@ -1,0 +1,6 @@
+<h1>New Competency Levels</h1>
+
+<%= form_for(@competency_level) do |f| %>
+	<%= render(:partial => 'form', :locals => {:f => f}) %>
+	<%= f.submit('Create Competency Level') %>
+<% end %>

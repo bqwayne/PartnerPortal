@@ -1,0 +1,45 @@
+<% @page_title = "Details for #{@competency.name}" %>
+
+<h1><%= "#{@competency.name} "%></h1>
+
+<table>
+	<tr>
+		<td>Description:</td>
+		<td><%= @competency.description %></td>
+	</tr>
+	<tr>
+		<td>Type:</td>
+		<td><%= @competency.competency_type.name %></td>
+	</tr>
+	<tr>
+		<td>Created at :</td>
+		<td><%= @competency.created_at.strftime('%d-%b-%Y %T') %></td>
+	</tr>
+	<tr>
+		<td>Updated at :</td>
+		<td><%= @competency.updated_at.strftime('%d-%b-%Y %T') %></td>
+	</tr>
+	<tr>
+		<td>Number of Partners: </td>
+		<td><%= @competency.partners.size %> <button class="showTableBtn" data-target="#partners">Show</button><button class="hideTableBtn" data-target="#partners">Hide</button></td>
+	</tr>
+	<tr>
+		<table id="partners">
+			<thead>
+				<th>Partner Name <%= link_to('Add Partner')%></th>
+			</thead>
+			<tbody>
+				<% @competency.partners.each do |partner| %>
+					<tr>
+						<td><%= partner.name %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</tr>
+</table>
+<br />
+<%= link_to('<button>Edit</button>'.html_safe, edit_competency_path) %>
+<%= link_to('<button>Delete</button>'.html_safe, delete_competency_path) %>
+<br /><br />
+<%= link_to("Home", competencies_path)%>

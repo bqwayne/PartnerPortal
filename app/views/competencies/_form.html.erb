@@ -1,0 +1,17 @@
+<%= error_messages_for(f.object) %>
+
+	<table>
+		<tr>
+			<th>Name: </th>
+			<td><%= f.text_field(:name) %></td>
+		</tr>
+		<tr>
+			<th>Description: </th>
+			<td><%= f.text_area(:description) %></td>
+		</tr>
+		<tr>
+			<th>Type: </th>
+			<td><%= f.collection_select(:competency_type_id, CompetencyType.all, :id, :name) %></td>
+		</tr>
+	</table>
+	

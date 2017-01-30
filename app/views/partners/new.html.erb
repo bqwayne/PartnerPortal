@@ -1,0 +1,18 @@
+<% @page_title = "New Partner" %>
+<h1>New Partner</h1>
+
+<%= form_for(@partner) do |f| %>
+	
+	<%= render(:partial => 'form', :locals => {:f => f}) %>
+	<hr />
+	<%= fields_for(@partner_memberships) do |pm| %>
+		<%= pm.label "All Competencies" %><br />
+		<%= collection_select(:competencies, :id, @all_competencies, :id, :name, {}, { multiple: true }) %>
+	<% end %>
+	<br />
+	<%= f.submit("Create Partner") %>
+<% end %>
+
+<br />
+
+<%= link_to("Home", partners_path)%>

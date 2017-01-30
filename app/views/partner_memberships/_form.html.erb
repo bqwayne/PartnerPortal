@@ -1,0 +1,21 @@
+<%= error_messages_for(f.object) %>
+
+	<table>
+		<tr>
+			<th>Competency Level: </th>
+			<td><%= f.collection_select(:competency_level_id, CompetencyLevel.all, :id, :name) %></td>
+		</tr>
+		<tr>
+			<th>Number of VSE</th>
+			<td><%= f.number_field(:num_vse, size: 2)  %></td>
+		</tr>
+		<tr>
+			<th>Number of VSEplus</th>
+			<td><%= f.number_field(:num_vseplus, size: 2)  %></td>
+		</tr>
+		<tr>
+			<th>Number of VCS</th>
+			<td><%= f.number_field(:num_vcs, size: 2)  %></td>
+		</tr>		
+	</table>
+	

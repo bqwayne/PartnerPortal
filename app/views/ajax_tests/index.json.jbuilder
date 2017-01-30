@@ -1,0 +1,1 @@
+json.array! @ajax_tests, partial: 'ajax_tests/ajax_test', as: :ajax_test

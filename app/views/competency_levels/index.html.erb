@@ -1,0 +1,17 @@
+<h1>Competency Levels</h1>
+
+<table class="table">
+	<thead>
+		<th>Name</th>
+		<th>Description</th>
+	</thead>
+	<tbody>
+		<% @competency_levels.each do |comp_level| %>
+		<tr>
+			<td><%= comp_level.name %></td>
+			<td><%= comp_level.description %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= link_to('Add Competency Level', new_competency_level_path, {class: 'btn btn-xs btn-success'})%>

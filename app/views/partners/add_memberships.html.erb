@@ -1,0 +1,58 @@
+<h1>Add Partner Competency Membership</h1>
+
+<h2><%= "#{@partner.name} "%></h2>
+<div class="row">
+	<div class="col-md-6">
+		<p>Current Memberships <span class="badge"><%= @curr_memberships.size %></span></p>
+		<% if @curr_memberships.size == 0 %>
+			<p>No Current memberships</p>
+		<% else %>
+			<table class="table">
+				<thead>
+					<th>Competency Name</th>
+					<th>Competency Description</th>
+				</thead>
+				<tbody>
+					<% @curr_memberships.each do |membership| %>
+					<tr>
+						<td><%= membership.competency.name %></td>
+						<td><%= membership.competency.description %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		<% end %>
+	</div>
+	<div class="col-md-6">
+		<p>Available Memberships <span class="badge"><%= @available_memberships.size %></span></p>
+		<% if @available_memberships.size == 0 %>
+			<p>No available competencies to add</p>
+		<% else %>
+			<table class="table">
+				<thead>
+					<th>Competency Name</th>
+					<th>Competency Description</th>
+				</thead>
+				<tbody>
+					<% @available_memberships.each do |competency| %>
+					<tr>
+						<td><%= competency.name %></td>
+						<td><%= competency.description %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		<% end %>
+	</div>
+</div>
+<div class="row">
+	<%= form_for(@partner) do |p| %>
+		<%= p.hidden_field(:edit_type, :value=>"Add Partner")%>
+		<%= fields_for(@new_memberships) do |f| %>
+			<%= f.label "Select Competencies to Add" %><br />
+			<%=	collection_select(:competencies, :id, @available_memberships, :id, :name, {}, { multiple: true }) %>
+			<br />
+			<%= f.submit("Save") %>
+		<% end %>
+	<% end %>
+</div>

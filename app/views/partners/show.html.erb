@@ -1,0 +1,61 @@
+<% @page_title = "Details for #{@partner.name}" %>
+
+<h1><%= "#{@partner.name}" %></h1>
+
+<table>
+	<tbody>
+		<tr>
+			<td>PartnerNet Account:</td>
+			<td><%= @partner.pnet_acct %></td>
+		</tr>
+		<tr>
+			<td>Status:</td>
+			<td><%= @partner.partner_level.name %></td>
+		</tr>
+		<tr>
+			<td>Created at :</td>
+			<td><%= @partner.created_at.strftime('%d-%b-%Y %T') %></td>
+		</tr>
+		<tr>
+			<td>Updated at :</td>
+			<td><%= @partner.updated_at.strftime('%d-%b-%Y %T') %></td>
+		</tr>
+		<tr>
+			<td>Number of Competencies: </td>
+			<td><span class="badge" id="numCompetencies"><%= @partner.competencies.size %></span>
+				<button class="btn btn-xs showTableBtn" data-target="#competencies">Show</button>
+				<button class="btn btn-xs hideTableBtn" data-target="#competencies">Hide</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<br />
+<table id="competencies" class="table">
+	<thead>
+		<th></th>
+		<th></th>
+		<th>Competency Name</th>
+		<th>Competency Level</th>
+		<th>Number of VSE</th>
+		<th>Number of VSEplus</th>
+		<th>Number of VCS</th>
+	</thead>
+	<tbody id="PartnerMembershipTableBody">
+		<% @partner.partner_memberships.each do |membership| %>
+			<%= render partial: 'partner_membership_table_row', locals: {membership: membership} %>
+		<% end %>
+	</tbody>
+</table>
+<% if @partner.competencies.size < Competency.all.size %>
+					<%= link_to('',add_memberships_partner_path(@partner), {:remote => true, class: 'glyphicon glyphicon-plus', 'data-toggle' => "modal", 'data-target' => "#myModal", 'type' => "button"})%>
+				<% end %>
+<div id="myModal" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content"></div>
+	</div>
+</div>
+<br />
+<%= link_to('<button>Edit</button>'.html_safe, edit_partner_path) %>
+<%= link_to('<button>Delete</button>'.html_safe, delete_partner_path) %>
+<br /><br />
+<%= link_to("Home", partners_path)%>

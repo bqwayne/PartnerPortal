@@ -1,0 +1,26 @@
+<h1>Partner membership index</h1>
+
+<table class="table">
+	<thead>
+		<td></td>
+		<td>Partner</td>
+		<td>Competency</td>
+		<td>Competency Level</td>
+		<td># of VSE</td>
+		<td># of VSEplus</td>
+		<td># of VCS</td>
+	</thead>
+	<tbody id="PartnerMembershipTableBody">
+	<% @partner_memberships.each do |pm| %>
+		<%= render partial: 'partner_membership_table_row', locals: { membership: pm } %>
+	<% end %>
+	</tbody>
+</table>
+
+<%= link_to('',new_partner_membership_path, {:remote => true, class: 'glyphicon glyphicon-plus', 'data-toggle' => "modal", 'data-target' => "#myModal", 'type' => "button"})%>
+
+<div id="myModal" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content"></div>
+	</div>
+</div>

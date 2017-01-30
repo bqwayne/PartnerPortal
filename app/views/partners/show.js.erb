@@ -1,0 +1,3 @@
+$("#PartnerMembershipTableBody").html("<% @partner.partner_memberships.each do |membership| %><%= j render partial: 'partner_membership_table_row', locals: {membership: membership} %><% end %>");
+$("#numCompetencies").html("<%= @partner.competencies.size %>");
+$("#myModal").modal('hide');

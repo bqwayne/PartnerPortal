@@ -1,0 +1,17 @@
+<%= error_messages_for(f.object) %>
+
+	<table>
+		<tr>
+			<th>Name: </th>
+			<td><%= f.text_field(:name) %></td>
+		</tr>
+		<tr>
+			<th>PartnerNet Account</th>
+			<td><%= f.text_field(:pnet_acct)  %></td>
+		</tr>
+		<tr>
+			<th>Status: </th>
+			<td><%= f.collection_select(:partner_level_id, @partner_levels, :id, :name) %></td>
+		</tr>
+	</table>
+	

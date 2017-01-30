@@ -1,0 +1,26 @@
+<%= form_for(@new_ajax_test, :remote => true) do |f| %>
+  <% if @new_ajax_test.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ajax_test.errors.count, "error") %> prohibited this ajax_test from being saved:</h2>
+
+      <ul>
+      <% ajax_test.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <table class="table">
+  	<tr>
+  		<td>Name: </td>
+  		<td><%= f.text_field(:name)%></td>
+  	</tr>
+  </table>
+
+<%= f.submit('Save') %>
+<!--  <div class="actions"> 
+    <%= f.submit('Save') %>
+  </div>
+-->
+<% end %>

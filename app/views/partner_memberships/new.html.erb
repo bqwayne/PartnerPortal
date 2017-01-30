@@ -1,0 +1,12 @@
+<h1>New Partner Membership</h1>
+
+<%= form_for(@partner_membership) do |pm| %>
+	<%= pm.collection_select(:partner_id, Partner.sorted, :id, :name)%>
+	<%=	pm.collection_select(:competency_id, Competency.sorted, :id, :name) %>
+	<%= pm.collection_select(:competency_level_id, CompetencyLevel.all, :id, :name)%>
+	<%= pm.number_field(:num_vse) %>
+	<%= pm.number_field(:num_vseplus) %>
+	<%= pm.number_field(:num_vcs) %>
+	<%= pm.submit('Save')%>
+<% end %>
+	

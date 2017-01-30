@@ -1,0 +1,11 @@
+<% @page_title = "Delete Partner #{@partner.name}" %>
+<h1>Partner delete</h1>
+
+
+
+<%= form_for(@partner, :method => 'delete') do |f| %>
+	<p>You are about to delete a partner: <%= f.object.name %></p>
+	<%= f.submit("Delete Partner") %>
+<% end %>
+<br />
+<%= link_to("Home", {:action => 'index'})%>

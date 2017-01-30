@@ -1,0 +1,13 @@
+<% @page_title = "Edit #{@partner.name}" %>
+
+<h1>Partner edit</h1>
+
+<%= form_for(@partner) do |f| %>
+
+	<%= render(:partial => 'form', :locals => {:f => f}) %>
+	<%= hidden_field(:edit_type => "Edit Partner")%>
+	<%= f.submit("Save") %>
+<% end %>
+<br />
+
+<%= link_to("Home", {:action => 'index'})%>

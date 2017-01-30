@@ -1,0 +1,1 @@
+json.partial! "ajax_tests/ajax_test", ajax_test: @ajax_test

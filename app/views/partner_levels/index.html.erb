@@ -1,0 +1,15 @@
+<h1>Partner Levels</h1>
+
+<table class="table">
+	<thead>
+		<th>Name</th>
+	</thead>
+	<tbody>
+		<% @partner_levels.each do |partner_level| %>
+		<tr>
+			<td><%= partner_level.name %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= link_to('Add Partner Level', new_partner_level_path, {class: 'btn btn-xs btn-success'})%>

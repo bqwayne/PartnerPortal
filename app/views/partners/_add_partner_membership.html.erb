@@ -1,0 +1,26 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+	<h3 id="myModalLabel">Add Partner Membership</h3>
+</div>
+
+
+<div class="modal-body">
+<%= form_for(@partner, :remote => true) do |p| %>
+	<%= hidden_field_tag('edit_type', "Add Partner")%>
+	<%= p.hidden_field(:id) %>
+	<%= fields_for(new_membership) do |pm|%>
+	<table class="table">
+		<tr><td>Competency: </td><td><%= pm.collection_select(:competency_id, @available_memberships, :id, :name) %></td></tr>
+		<tr><td>Competency Level: </td><td><%= pm.collection_select(:competency_level_id, CompetencyLevel.all, :id, :name)%></td></tr>
+		<tr><td>Number of VSE: </td><td><%= pm.number_field(:num_vse) %></td></tr>
+		<tr><td>Number of VSEplus: </td><td><%= pm.number_field(:num_vseplus) %></td></tr>
+		<tr><td>Number of VCS: </td><td><%= pm.number_field(:num_vcs) %></td></tr>
+	</table>
+	<% end %>
+	<%= p.submit('Save')%>
+<% end %>		
+</div>
+		
+<div class="modal-footer">
+	<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+</div>
